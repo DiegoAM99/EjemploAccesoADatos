@@ -15,7 +15,11 @@ public class EjemploAccesoDatos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+      
         GestorConexion gc = new GestorConexion();
-    
+        
+        gc.cerrar_conexion();
+        PoolConexiones pc = new PoolConexiones();
+        
     }
 }
