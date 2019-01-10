@@ -6,6 +6,8 @@
 package ejemploaccesodatos;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 /**
@@ -13,8 +15,9 @@ import org.apache.commons.dbcp2.BasicDataSource;
  * @author xp
  */
 public class PoolConexiones {
+    Connection con = null;
     public PoolConexiones(){
-        Connection con = null;
+        
         BasicDataSource bdSource = new BasicDataSource();
         bdSource.setUrl("jdbc:mysql://localhost:3306/discografica?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         bdSource.setUsername("root");
@@ -32,4 +35,44 @@ public class PoolConexiones {
             System.out.println("Error" + e.toString());
         }
     }
+    
+    public void cerrar_conexion(){
+        try{
+            con.close();
+            System.out.println("Conexion cerrada");
+        
+        }catch(SQLException ex){
+            System.out.println("Error al cerrar la conexion");
+        }
+    }
+    
+    public void modificar(){
+     try{
+            //Crea un statement
+            Statement sta = con.createStatement();
+            
+            //Ejecuta la insercion
+            sta.executeUpdate("ALTER TABLE album ADD anno_publicacion YEAR");
+            //Cierra el statement
+            sta.close();
+        }catch(SQLException ex){
+            System.out.println("ERROR");
+            ex.printStackTrace();
+        }
+}
+    
+    public void borrar(){
+     try{
+            //Crea un statement
+            Statement sta = con.createStatement();
+            
+            //Ejecuta la insercion
+            sta.executeUpdate("DROP TABLE album");
+            //Cierra el statement
+            sta.close();
+        }catch(SQLException ex){
+            System.out.println("ERROR");
+            ex.printStackTrace();
+        }
+}
 }

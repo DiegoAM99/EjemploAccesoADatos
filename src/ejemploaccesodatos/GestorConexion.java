@@ -8,6 +8,7 @@ package ejemploaccesodatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 
@@ -46,6 +47,21 @@ public class GestorConexion {
         
         }catch(SQLException ex){
             System.out.println("Error al cerrar la conexion");
+        }
+    }
+    
+    public void insertar(){
+        try{
+            //Crea un statement
+            Statement sta = conn1.createStatement();
+            
+            //Ejecuta la insercion
+            sta.executeUpdate("INSERT INTO album VALUES(2, 'Greatest Hits', 'Queen')");
+            //Cierra el statement
+            sta.close();
+        }catch(SQLException ex){
+            System.out.println("ERROR: al hacer un insert");
+            ex.printStackTrace();
         }
     }
 }

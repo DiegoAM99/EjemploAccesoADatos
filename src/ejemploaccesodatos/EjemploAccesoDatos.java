@@ -19,7 +19,9 @@ public class EjemploAccesoDatos {
         GestorConexion gc = new GestorConexion();
         
         gc.cerrar_conexion();
+        
         PoolConexiones pc = new PoolConexiones();
+        pc.cerrar_conexion();
         
     }
 }
