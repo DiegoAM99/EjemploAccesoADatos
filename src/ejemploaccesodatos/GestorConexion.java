@@ -64,4 +64,33 @@ public class GestorConexion {
             ex.printStackTrace();
         }
     }
+    public void modificar(){
+     try{
+            //Crea un statement
+            Statement sta = conn1.createStatement();
+            
+            //Ejecuta la insercion
+            sta.executeUpdate("ALTER TABLE album ADD anno_publicacion YEAR");
+            //Cierra el statement
+            sta.close();
+        }catch(SQLException ex){
+            System.out.println("ERROR");
+            ex.printStackTrace();
+        }
+}
+    
+    public void borrar(){
+     try{
+            //Crea un statement
+            Statement sta = conn1.createStatement();
+            
+            //Ejecuta la insercion
+            sta.executeUpdate("DROP TABLE album");
+            //Cierra el statement
+            sta.close();
+        }catch(SQLException ex){
+            System.out.println("ERROR");
+            ex.printStackTrace();
+        }
+}
 }
