@@ -74,7 +74,7 @@ public class GestorConexion {
             //Cierra el statement
             sta.close();
         }catch(SQLException ex){
-            System.out.println("ERROR");
+            System.out.println("ERROR: al hacer un ALTER TABLE");
             ex.printStackTrace();
         }
 }
@@ -89,8 +89,8 @@ public class GestorConexion {
             //Cierra el statement
             sta.close();
         }catch(SQLException ex){
-            System.out.println("ERROR");
+            System.out.println("ERROR: al hacer unDROP TABLE");
             ex.printStackTrace();
         }
-}
+    }
 }

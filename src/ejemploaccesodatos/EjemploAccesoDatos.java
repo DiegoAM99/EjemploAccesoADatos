@@ -17,11 +17,11 @@ public class EjemploAccesoDatos {
     public static void main(String[] args) {
       
         GestorConexion gc = new GestorConexion();
-        
+        gc.insertar();
         gc.cerrar_conexion();
         
-        PoolConexiones pc = new PoolConexiones();
-        pc.cerrar_conexion();
+//        PoolConexiones pc = new PoolConexiones();
+//        pc.cerrar_conexion();
         
     }
 }
